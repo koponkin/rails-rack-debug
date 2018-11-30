@@ -12,6 +12,7 @@ RUN rails new mapbug
 WORKDIR /app/mapbug
 
 COPY config.ru .
+COPY application.rb config/application.rb
 COPY development.rb config/environments/development.rb
 
 CMD rackup -o 0.0.0.0
