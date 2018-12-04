@@ -1,18 +1,16 @@
 FROM starefossen/ruby-node
 
-RUN mkdir -p /app/config/
-
+RUN mkdir -p /app
 WORKDIR /app
 
-COPY Gemfile .
+COPY . .
+
+RUN ls app
+
+RUN rm Gemfile.lock
 
 RUN bundle install
-RUN rails new mapbug
 
-WORKDIR /app/mapbug
-
-COPY config.ru .
-COPY application.rb config/application.rb
-COPY development.rb config/environments/development.rb
+RUN gem install rails
 
 CMD rackup -o 0.0.0.0
